@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación Social Salud Hoy al Alcance de Todos - Recepción de Iniciativas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#e6f0fa',
+                            100: '#cce2f5',
+                            500: '#0056b3',
+                            600: '#004494',
+                            700: '#003375',
+                        },
+                        accent: {
+                            500: '#dc2626',
+                            600: '#b91c1c'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .step-transition { transition: all 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-2 sm:mb-0">
+                <img src="https://i.postimg.cc/1zGKLz1g/14.png" alt="Logo Fundación Social Salud Hoy" class="w-10 h-10 object-contain rounded-full shadow-sm bg-white p-0.5 border border-gray-100" onerror="this.src='https://placehold.co/40x40/0056b3/ffffff?text=SH'">
+                <div>
+                    <h1 class="font-bold text-sm sm:text-base text-brand-700 leading-tight">Fundación Social Salud Hoy al Alcance de Todos</h1>
+                    <p class="text-xs text-gray-500 italic">"Levantémonos y edifiquemos" - Reconstruyendo comunidades</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button onclick="openAdminModal()" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium px-3 py-1.5 rounded-lg border border-gray-300 transition">
+                    Panel y Arquitectura
+                </button>
+                <button onclick="scrollToForm()" class="text-xs bg-brand-500 hover:bg-brand-600 text-white font-semibold px-4 py-1.5 rounded-lg shadow transition">
+                    Presentar Iniciativa
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="bg-gradient-to-b from-brand-50 to-white py-12 px-4 border-b border-gray-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="flex justify-center mb-4">
+                <img src="https://i.postimg.cc/1zGKLz1g/14.png" alt="Logo Institucional" class="w-20 h-20 object-contain drop-shadow-md bg-white rounded-full p-1 border border-gray-200" onerror="this.style.display='none'">
+            </div>
+            <span class="inline-block bg-brand-100 text-brand-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-3">
+                Inspirados en el Libro de Nehemías
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+                Levantémonos y edifiquemos <span class="text-brand-500">nuestra comunidad</span>
+            </h2>
+            <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+                Así como Nehemías vio los muros en ruinas y movilizó a su pueblo para restaurarlos, hoy te invitamos a ser un restaurador de portillos. Cuéntanos qué necesidad observas, qué solución propones y qué recursos hacen falta para iniciar la obra.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-3 mb-10">
+                <button onclick="scrollToForm()" class="bg-accent-500 hover:bg-accent-600 text-white font-bold text-base px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition transform active:scale-95">
+                    Presentar mi iniciativa
+                </button>
+                <button onclick="scrollToHowItWorks()" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold text-base px-6 py-3 rounded-xl border border-gray-300 shadow-sm transition">
+                    ¿Cómo funciona?
+                </button>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-lg max-w-2xl mx-auto text-left text-xs sm:text-sm text-amber-800 shadow-sm">
+                <span class="font-bold">Aviso importante:</span> Presentar una iniciativa no garantiza su selección ni la obtención de recursos. Esta es una herramienta gratuita de recopilación y orientación para el fortalecimiento comunitario.
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-12 px-4 max-w-5xl mx-auto">
+        <h3 class="text-center text-xl sm:text-2xl font-bold text-gray-800 mb-8">¿Cómo transformamos tu idea en un proyecto real?</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative">
+                <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center text-sm shadow">1</div>
+                <h4 class="font-bold text-gray-900 text-lg mb-2 mt-1">Cuéntanos tu idea</h4>
+                <p class="text-sm text-gray-600">Completa nuestro formulario paso a paso. No necesitas experiencia técnica ni documentos complejos, solo conocer tu comunidad y su necesidad.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative">
+                <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center text-sm shadow">2</div>
+                <h4 class="font-bold text-gray-900 text-lg mb-2 mt-1">Organizamos y evaluamos</h4>
+                <p class="text-sm text-gray-600">Nuestro equipo técnico estructura una ficha diagnóstica preliminar, revisando la viabilidad, presupuesto estimado y coherencia de la solución.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative">
+                <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-accent-500 text-white font-bold flex items-center justify-center text-sm shadow">3</div>
+                <h4 class="font-bold text-gray-900 text-lg mb-2 mt-1">Alianzas y financiación</h4>
+                <p class="text-sm text-gray-600">Identificamos oportunidades de desarrollo, articulación con aliados estratégicos y postulaciones a convocatorias nacionales e internacionales.</p>
+            </div>
+        </div>
+    </section>
+    <section id="how-it-works" class="py-12 px-4 max-w-5xl mx-auto">
+        <h3 class="text-center text-xl sm:text-2xl font-bold text-gray-800 mb-8">El proceso de Restauración: ¿Cómo transformamos tu idea?</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative">
+                <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center text-sm shadow">1</div>
+                <h4 class="font-bold text-gray-900 text-lg mb-2 mt-1">Inspección de las Ruinas</h4>
+                <p class="text-sm text-gray-600">Al igual que Nehemías observó los muros caídos, ayúdanos a identificar la necesidad. Completa el formulario paso a paso con lo que observas en tu comunidad.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative">
+                <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center text-sm shadow">2</div>
+                <h4 class="font-bold text-gray-900 text-lg mb-2 mt-1">Planificación y Sabiduría</h4>
+                <p class="text-sm text-gray-600">Nuestro equipo estructura una ficha técnica preliminar, organizando tus ideas, revisando el presupuesto y evaluando la mejor estrategia para "levantar el muro".</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative">
+                <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-accent-500 text-white font-bold flex items-center justify-center text-sm shadow">3</div>
+                <h4 class="font-bold text-gray-900 text-lg mb-2 mt-1">La Obra y las Alianzas</h4>
+                <p class="text-sm text-gray-600">Identificamos "la provisión del rey": oportunidades de financiación, aliados estratégicos y movilización de recursos para hacer realidad la iniciativa.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <main id="form-section" class="py-8 px-4 max-w-3xl mx-auto w-full flex-grow">
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+            
+            <div class="bg-brand-700 text-white px-6 py-4">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-bold text-base sm:text-lg" id="step-title">Paso 1: Identificación del Proponente</h3>
+                    <span id="step-counter" class="text-xs bg-brand-600 px-3 py-1 rounded-full font-medium">Paso 1 de 10</span>
+                </div>
+                <div class="w-full bg-brand-900 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-accent-500 h-2.5 rounded-full transition-all duration-300" style="width: 10%;"></div>
+                </div>
+            </div>
+
+            <div id="draft-alert" class="hidden bg-blue-50 border-b border-blue-100 px-6 py-2.5 text-xs text-blue-800 flex justify-between items-center">
+                <span>Hemos recuperado un borrador guardado en este dispositivo.</span>
+                <button onclick="clearDraft()" class="text-red-600 hover:underline font-semibold">Borrar y empezar de nuevo</button>
+            </div>
+
+            <form id="initiative-form" onsubmit="event.preventDefault();" class="p-6 sm:p-8 space-y-6">
+
+                <!-- PASO 1 -->
+                <div class="form-step" data-step="1">
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">El Llamado del Líder (Quien presenta la iniciativa)</h4>
+                    <p class="text-xs text-gray-500 mb-6">Así como Nehemías asumió la responsabilidad por su pueblo, indícanos tus datos básicos para mantener comunicación directa contigo.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Nombre completo <span class="text-red-500">*</span></label>
+                            <input type="text" id="p1_nombre" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. María Elena Cárdenas">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Número de WhatsApp <span class="text-red-500">*</span></label>
+                                <input type="tel" id="p1_whatsapp" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. 3042908325">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Correo electrónico (Opcional)</label>
+                                <input type="email" id="p1_email" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="ejemplo@correo.com">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Departamento <span class="text-red-500">*</span></label>
+                                <input type="text" id="p1_depto" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. La Guajira">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Municipio <span class="text-red-500">*</span></label>
+                                <input type="text" id="p1_municipio" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Fonseca">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Comunidad, barrio, vereda o territorio <span class="text-red-500">*</span></label>
+                            <input type="text" id="p1_comunidad" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Resguardo Indígena / Vereda San José">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Cargo o función en la comunidad</label>
+                                <input type="text" id="p1_cargo" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Líder comunitario">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Presenta a título personal o en representación? <span class="text-red-500">*</span></label>
+                                <select id="p1_tipo_representacion" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm bg-white">
+                                    <option value="Personal">A título personal / Emprendedor individual</option>
+                                    <option value="Organizacion">En representación de grupo u organización</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="org_fields" class="space-y-4 pt-2 border-t border-gray-100">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Nombre de la organización o grupo</label>
+                                <input type="text" id="p1_org_nombre" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Asociación Agropecuaria">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-1">¿Está legalmente constituida?</label>
+                                    <select id="p1_constituyda" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm bg-white">
+                                        <option value="No">No</option>
+                                        <option value="Si">Sí</option>
+                                        <option value="En proceso">En proceso de constitución</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-1">NIT o Personería jurídica (Opcional)</label>
+                                    <input type="text" id="p1_nit" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. 900.123.456-1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Cuántas personas participan actualmente?</label>
+                                <input type="number" id="p1_participantes" min="1" value="1" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Persona de contacto (si es diferente)</label>
+                                <input type="text" id="p1_contacto_sec" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Nombre y teléfono alternativo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 2 -->
+                <div class="form-step hidden" data-step="2">
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Las Puertas a Restaurar (Naturaleza de la iniciativa)</h4>
+                    <p class="text-xs text-gray-500 mb-6">Selecciona el área o "puerta" (categoría) que tu propuesta busca reconstruir o fortalecer en la comunidad.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Categoría principal <span class="text-red-500">*</span></label>
+                            <select id="p2_categoria" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm bg-white">
+                                <option value="Negocio o emprendimiento comunitario">A. Negocio o emprendimiento comunitario</option>
+                                <option value="Proyecto productivo agropecuario">B. Proyecto productivo agropecuario</option>
+                                <option value="Transformación y comercialización de alimentos">C. Transformación y comercialización de alimentos</option>
+                                <option value="Agua potable, saneamiento e higiene">D. Agua potable, saneamiento e higiene</option>
+                                <option value="Salud comunitaria y prevención">E. Salud comunitaria y prevención</option>
+                                <option value="Educación, formación y desarrollo de capacidades">F. Educación, formación y desarrollo de capacidades</option>
+                                <option value="Seguridad alimentaria y nutrición">G. Seguridad alimentaria y nutrición</option>
+                                <option value="Artesanías, cultura y turismo comunitario">H. Artesanías, cultura y turismo comunitario</option>
+                                <option value="Generación de ingresos y empleo">I. Generación de ingresos y empleo</option>
+                                <option value="Fortalecimiento de organizaciones comunitarias">J. Fortalecimiento de organizaciones comunitarias</option>
+                                <option value="Desarrollo social y participación ciudadana">K. Desarrollo social y participación ciudadana</option>
+                                <option value="Iniciativa social o de una iglesia">L. Iniciativa social o de una iglesia</option>
+                                <option value="Infraestructura y equipamiento comunitario">M. Infraestructura y equipamiento comunitario</option>
+                                <option value="Otra iniciativa">N. Otra iniciativa</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Es una idea nueva o ya está funcionando?</label>
+                                <select id="p2_tipo_idea" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm bg-white">
+                                    <option value="Idea nueva">Es una idea nueva</option>
+                                    <option value="Ya funcionando">Ya está funcionando / En marcha</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿En qué etapa se encuentra?</label>
+                                <select id="p2_etapa" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm bg-white">
+                                    <option value="Idea">Idea inicial</option>
+                                    <option value="Planificacion">Planificación</option>
+                                    <option value="Piloto">Prueba / Piloto</option>
+                                    <option value="Operacion">Operación regular</option>
+                                    <option value="Expansion">Expansión</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué deseas lograr principalmente? <span class="text-red-500">*</span></label>
+                            <input type="text" id="p2_objetivo_ppal" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Generar ingresos estables">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Nombre provisional de la iniciativa <span class="text-red-500">*</span></label>
+                            <input type="text" id="p2_nombre_prop" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Huerta Comunitaria Orgánica">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 3 -->
+                <div class="form-step hidden" data-step="3">
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Inspección de las Ruinas (Diagnóstico del problema)</h4>
+                    <p class="text-xs text-gray-500 mb-6">Nehemías inspeccionó los muros de noche antes de actuar. Describe con tus palabras qué "ruinas" o situaciones deseas mejorar hoy.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué situación deseas mejorar o qué problema observas actualmente? <span class="text-red-500">*</span></label>
+                            <textarea id="p3_problema" rows="3" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Falta de oportunidades de empleo..."></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿A quiénes afecta principalmente?</label>
+                                <input type="text" id="p3_afectados" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Jóvenes y mujeres rurales">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Desde hace cuánto tiempo existe?</label>
+                                <input type="text" id="p3_tiempo" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Más de 5 años">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Cómo afecta la vida diaria de las personas y qué sucede si no se hace nada?</label>
+                            <textarea id="p3_consecuencias" rows="2" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Deserción escolar y migración..."></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué soluciones se han intentado antes?</label>
+                                <input type="text" id="p3_intentos" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Ollas comunitarias temporales">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué recursos o capacidades existen hoy?</label>
+                                <input type="text" id="p3_recursos_act" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Terreno comunal disponible">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué evidencias tienes del problema?</label>
+                            <input type="text" id="p3_evidencias" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Registros fotográficos y testimonios">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 4 -->
+                <div class="form-step hidden" data-step="4">
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">¡Levantémonos y Edifiquemos! (Solución Propuesta)</h4>
+                    <p class="text-xs text-gray-500 mb-6">Con la convicción de reconstruir, explica cómo planeas resolver el problema paso a paso.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué propones hacer para resolver el problema? <span class="text-red-500">*</span></label>
+                            <textarea id="p4_propuesta" rows="3" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Montar un taller comunitario de transformación..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué productos, servicios o resultados esperas obtener?</label>
+                            <input type="text" id="p4_resultados" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. 500 paquetes mensuales y 15 empleos">
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="block text-sm font-semibold text-gray-700">Actividades principales a realizar</label>
+                                <button type="button" onclick="addActivityField()" class="text-xs bg-brand-50 hover:bg-brand-100 text-brand-700 font-semibold px-3 py-1 rounded-lg border border-brand-200 transition">+ Agregar otra actividad</button>
+                            </div>
+                            <div id="activities-container" class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <input type="text" class="activity-input w-full px-4 py-2 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Ej. Adecuación del local y compra de maquinaria">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué necesitas conseguir para empezar?</label>
+                                <input type="text" id="p4_necesidades" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Capital semilla y equipos">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Existen aliados potenciales?</label>
+                                <input type="text" id="p4_aliados" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Alcaldía o cooperativa local">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Cómo participará la comunidad en las decisiones y actividades?</label>
+                            <input type="text" id="p4_participacion" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Asambleas mensuales y trabajo voluntario">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 5 -->
+                <div class="form-step hidden" data-step="5">
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Las Familias sobre el Muro (Población Beneficiaria)</h4>
+                    <p class="text-xs text-gray-500 mb-6">En Jerusalén, cada familia restauró un tramo. ¿Quiénes son las personas y familias que se beneficiarán directamente con la iniciativa?</p>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Personas beneficiadas directamente <span class="text-red-500">*</span></label>
+                                <input type="number" id="p5_directos" min="1" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. 120 personas">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Personas beneficiadas indirectamente (aprox.)</label>
+                                <input type="number" id="p5_indirectos" min="0" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. 450 familiares">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Grupos poblacionales principales <span class="text-red-500">*</span></label>
+                            <input type="text" id="p5_grupos" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Mujeres cabeza de hogar y jóvenes">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Características particulares del territorio o población</label>
+                            <textarea id="p5_caracteristicas" rows="2" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Zona rural dispersa..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Cómo se garantizará la inclusión de personas con mayores barreras de acceso?</label>
+                            <input type="text" id="p5_inclusion" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Convocatoria abierta casa por casa">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 6 -->
+                <div class="form-step hidden" data-step="6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Organización de la Obra (Detalles Específicos)</h4>
+                    <p class="text-xs text-gray-500 mb-6">Para que la reconstrucción sea exitosa, necesitamos orden. Cuéntanos los detalles operativos de tu proyecto.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Cómo operará o funcionará el proyecto en el día a día?</label>
+                            <textarea id="p6_operacion" rows="3" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Turnos rotativos y venta local..."></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Quién administrará los equipos o recursos?</label>
+                                <input type="text" id="p6_administracion" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Comité administrativo comunitaria">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué experiencia tiene el equipo en esta labor?</label>
+                                <input type="text" id="p6_experiencia" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Experiencia empírica de 5 años">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Requerimientos técnicos, sanitarios o logísticos</label>
+                            <input type="text" id="p6_requisitos" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Permiso bromatológico y agua potable">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 7 -->
+                <div class="form-step hidden" data-step="7">
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">La Provisión para la Obra (Presupuesto y Recursos en COP)</h4>
+                    <p class="text-xs text-gray-500 mb-6">Nehemías solicitó madera y cartas de provisión al rey. Detalla aquí los costos y materiales necesarios para llevar a cabo esta obra.</p>
+                    <div class="overflow-x-auto mb-4 border border-gray-200 rounded-xl">
+                        <table id="budget-table" class="min-w-full text-xs text-left text-gray-700">
+                            <thead class="bg-gray-100 text-gray-800 uppercase font-bold border-b border-gray-200">
+                                <tr>
+                                    <th class="p-2.5">Concepto</th>
+                                    <th class="p-2.5">Cant.</th>
+                                    <th class="p-2.5">Costo Unit. (COP)</th>
+                                    <th class="p-2.5">Total (COP)</th>
+                                    <th class="p-2.5">Aporte Propio</th>
+                                    <th class="p-2.5">Solicitado</th>
+                                    <th class="p-2.5"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="budget-rows" class="divide-y divide-gray-200 bg-white">
+                                <!-- Filas dinámicas -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex justify-between items-center mb-6">
+                        <button type="button" onclick="addBudgetRow()" class="bg-brand-50 hover:bg-brand-100 text-brand-700 font-semibold px-4 py-2 rounded-xl border border-brand-200 text-xs transition">+ Añadir concepto de gasto</button>
+                        <div class="text-right text-sm">
+                            <p class="font-bold text-gray-900">Costo Total Estimado: <span id="lbl-total-general" class="text-brand-600 font-extrabold">$0</span></p>
+                            <p class="text-xs text-gray-500">Solicitado a financiador: <span id="lbl-total-solicitado" class="font-semibold">$0</span></p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿La comunidad puede aportar trabajo o materiales?</label>
+                            <input type="text" id="p7_aporte_comunidad" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Mano de obra comunitaria">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Se ha recibido financiación previa?</label>
+                            <input type="text" id="p7_financiacion_previa" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Ninguna">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 8 -->
+                <div class="form-step hidden" data-step="8">
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">La Espada y la Cuchara (Cronograma, Riesgos y Sostenibilidad)</h4>
+                    <p class="text-xs text-gray-500 mb-6">"Con una mano trabajaban en la obra, y en la otra tenían la espada" (Neh 4:17). ¿Cómo superaremos las dificultades, mitigaremos riesgos y sostendremos la obra?</p>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Cuándo les gustaría iniciar?</label>
+                                <input type="text" id="p8_inicio" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Próximos 3 meses">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Tiempo estimado de ejecución</label>
+                                <input type="text" id="p8_duracion" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. 6 meses">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué riesgos o dificultades podrían presentarse?</label>
+                                <input type="text" id="p8_riesgos" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Fuertes lluvias">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">¿Cómo se podrían mitigar esos riesgos?</label>
+                                <input type="text" id="p8_mitigacion" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Acopio anticipado de insumos">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Cómo se mantendrán los resultados cuando termine la financiación?</label>
+                            <textarea id="p8_sostenibilidad" rows="2" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Reinversión de un porcentaje de ventas"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">¿Qué resultados esperan alcanzar en el primer año?</label>
+                            <input type="text" id="p8_resultados_anual" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm" placeholder="Ej. Consolidar mercado y beneficiar 30 familias">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 9 -->
+                <div class="form-step hidden" data-step="9">
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Testimonios de la Necesidad (Evidencias - Opcional)</h4>
+                    <p class="text-xs text-gray-500 mb-6">Puedes adjuntar fotografías de la situación actual de tu comunidad o documentos de apoyo si los tienes disponibles.</p>
+                    <div class="space-y-4">
+                        <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:bg-gray-50 transition">
+                            <svg class="w-10 h-10 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                            <label class="block text-sm font-semibold text-gray-700 cursor-pointer">
+                                <span>Seleccionar archivos de tu dispositivo</span>
+                                <input type="file" id="p9_archivos" multiple class="hidden" onchange="handleFileSelection(event)">
+                            </label>
+                            <p class="text-xs text-gray-500 mt-1">Fotografías o cotizaciones (Opcional)</p>
+                            <div id="file-list" class="mt-3 text-xs text-brand-600 font-medium"></div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-xs text-gray-600 leading-relaxed">
+                            <span class="font-bold text-gray-800">Nota técnica sobre archivos:</span> Al funcionar en modo local sin servidor permanente, los archivos adjuntos se conservan en tu dispositivo para descarga o referencia.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 10 -->
+                <div class="form-step hidden" data-step="10">
+                    <div class="flex items-center space-x-3 mb-4 bg-brand-50 p-3 rounded-xl border border-brand-100">
+                        <img src="https://i.postimg.cc/1zGKLz1g/14.png" alt="Logo" class="w-10 h-10 object-contain rounded-full bg-white p-0.5 border" onerror="this.src='https://placehold.co/40x40/0056b3/ffffff?text=SH'">
+                        <div>
+                            <h4 class="text-base font-bold text-gray-900">Sellando el Pacto (Revisión Final)</h4>
+                            <p class="text-xs text-gray-600">Fundación Social Salud Hoy al Alcance de Todos</p>
+                        </div>
+                    </div>
+
+                    <div id="review-summary" class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-xs space-y-3 mb-6 max-h-60 overflow-y-auto">
+                        <!-- Generado por JS -->
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl border border-gray-300 space-y-2 mb-4">
+                        <label class="flex items-start space-x-3 cursor-pointer">
+                            <input type="checkbox" id="p10_consentimiento" class="mt-1 w-4 h-4 text-brand-600 rounded border-gray-300 focus:ring-brand-500">
+                            <span class="text-xs text-gray-700 leading-relaxed">
+                                <strong class="text-gray-900">Autorización de tratamiento de datos (Habeas Data):</strong> Autorizo expresamente a la Fundación Social Salud Hoy al Alcance de Todos para tratar mis datos personales suministrados con la finalidad de recibir, evaluar técnicamente y dar seguimiento a la presente iniciativa (Ley 1581 de 2012).
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <button type="button" onclick="sendToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl shadow transition flex items-center justify-center space-x-2 text-sm">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            <span>Enviar mi iniciativa por WhatsApp</span>
+                        </button>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button type="button" onclick="downloadFichaPDF()" class="bg-brand-500 hover:bg-brand-600 text-white font-semibold py-2.5 px-4 rounded-xl shadow transition text-xs flex items-center justify-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                <span>Descargar Ficha en TXT</span>
+                            </button>
+                            <button type="button" onclick="saveDraftManual()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2.5 px-4 rounded-xl border border-gray-300 transition text-xs">
+                                Guardar avance (Borrador)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de Navegación -->
+                <div class="flex justify-between items-center pt-6 border-t border-gray-100 mt-6">
+                    <button type="button" id="prev-btn" onclick="prevStep()" class="hidden bg-white hover:bg-gray-50 text-gray-700 font-semibold px-5 py-2.5 rounded-xl border border-gray-300 text-sm shadow-sm transition">
+                        Anterior
+                    </button>
+                    <button type="button" onclick="saveDraft()" class="text-xs text-gray-500 hover:text-brand-600 font-medium">
+                        Guardar borrador
+                    </button>
+                    <button type="button" id="next-btn" onclick="nextStep()" class="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-2.5 rounded-xl text-sm shadow transition">
+                        Continuar
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <!-- Modal de Arquitectura -->
+    <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-3">
+                <div class="flex items-center space-x-2">
+                    <img src="https://i.postimg.cc/1zGKLz1g/14.png" alt="Logo" class="w-8 h-8 object-contain">
+                    <h3 class="font-bold text-gray-900 text-base">Arquitectura Institucional</h3>
+                </div>
+                <button onclick="closeAdminModal()" class="text-gray-400 hover:text-gray-600 font-bold text-lg">&times;</button>
+            </div>
+            <div class="space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-brand-700 mb-1">1. Almacenamiento Local (LocalStorage)</h4>
+                    <p>Los datos se resguardan de forma privada en el navegador hasta que decides compartirlos.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-brand-700 mb-1">2. Versión Institucional con Base de Datos</h4>
+                    <p>Propuesta backend con Node.js / Python FastAPI y PostgreSQL cifrada para la gestión centralizada por parte de la Fundación.</p>
+                </div>
+            </div>
+            <div class="mt-6 text-right">
+                <button onclick="closeAdminModal()" class="bg-brand-500 text-white font-semibold px-5 py-2 rounded-xl text-xs shadow hover:bg-brand-600">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 px-4 border-t border-gray-800 text-xs mt-12">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+            <div class="flex items-center space-x-3">
+                <img src="https://i.postimg.cc/1zGKLz1g/14.png" alt="Logo" class="w-10 h-10 object-contain rounded-full bg-white p-0.5">
+                <div>
+                    <p class="font-bold text-white mb-1">Fundación Social Salud Hoy al Alcance de Todos</p>
+                    <p>Transformando vidas, desarrollando comunidades.</p>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-400">Línea institucional y WhatsApp: <strong class="text-white">304 290 8325</strong></p>
+                <p class="mt-1">Ley 1581 de 2012 - Protección de Datos</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript del sistema -->
+    <script>
+        const WHATSAPP_NUMBER = "573042908325";
+        let currentStep = 1;
+        const totalSteps = 10;
+        let budgetRowsData = [
+            { concepto: "Materiales iniciales / Insumos", desc: "Compra inicial", cant: 1, unit: 500000 }
+        ];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderBudgetTable();
+            checkSavedDraft();
+            updateFormStep();
+
+            document.getElementById('p1_tipo_representacion').addEventListener('change', (e) => {
+                const orgFields = document.getElementById('org_fields');
+                if (e.target.value === 'Organizacion') {
+                    orgFields.classList.remove('hidden');
+                } else {
+                    orgFields.classList.add('hidden');
+                }
+            });
+        });
+
+        function scrollToForm() {
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToHowItWorks() {
+            document.getElementById('how-it-works').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateFormStep() {
+            document.querySelectorAll('.form-step').forEach(el => el.classList.add('hidden'));
+            const currentEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            if (currentEl) currentEl.classList.remove('hidden');
+
+            const percent = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('step-counter').innerText = `Paso ${currentStep} de ${totalSteps}`;
+
+            const stepTitles = [
+                "Paso 1: El Llamado del Líder",
+                "Paso 2: Las Puertas a Restaurar",
+                "Paso 3: Inspección de los Muros",
+                "Paso 4: ¡Levantémonos y Edifiquemos!",
+                "Paso 5: Las Familias sobre el Muro",
+                "Paso 6: Organización de la Obra",
+                "Paso 7: La Provisión para la Obra",
+                "Paso 8: La Espada y la Cuchara",
+                "Paso 9: Testimonios de la Necesidad",
+                "Paso 10: Sellando el Pacto"
+            ];
+            document.getElementById('step-title').innerText = stepTitles[currentStep - 1];
+
+            const prevBtn = document.getElementById('prev-btn');
+            if (currentStep === 1) prevBtn.classList.add('hidden');
+            else prevBtn.classList.remove('hidden');
+
+            const nextBtn = document.getElementById('next-btn');
+            if (currentStep === totalSteps) {
+                nextBtn.classList.add('hidden');
+                generateReviewSummary();
+            } else {
+                nextBtn.classList.remove('hidden');
+            }
+
+            window.scrollTo({ top: document.getElementById('form-section').offsetTop - 80, behavior: 'smooth' });
+        }
+
+        function nextStep() {
+            const currentEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const inputs = currentEl.querySelectorAll('[required]');
+            let valid = true;
+            inputs.forEach(i => {
+                if (!i.value.trim()) {
+                    valid = false;
+                    i.classList.add('border-red-500');
+                } else {
+                    i.classList.remove('border-red-500');
+                }
+            });
+
+            if (!valid) {
+                alert("Por favor completa los campos obligatorios marcados antes de continuar.");
+                return;
+            }
+
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateFormStep();
+                saveDraft();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateFormStep();
+            }
+        }
+
+        function addActivityField() {
+            const container = document.getElementById('activities-container');
+            const div = document.createElement('div');
+            div.className = "flex items-center space-x-2 mt-2";
+            div.innerHTML = `<input type="text" class="activity-input w-full px-4 py-2 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Otra actividad clave">`;
+            container.appendChild(div);
+        }
+
+        function renderBudgetTable() {
+            const tbody = document.getElementById('budget-rows');
+            tbody.innerHTML = '';
+            budgetRowsData.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="p-2"><input type="text" value="${row.concepto}" onchange="updateBudget(${index}, 'concepto', this.value)" class="w-full px-2 py-1 border rounded text-xs"></td>
+                    <td class="p-2"><input type="number" value="${row.cant}" min="1" onchange="updateBudget(${index}, 'cant', this.value)" class="w-16 px-2 py-1 border rounded text-xs"></td>
+                    <td class="p-2"><input type="number" value="${row.unit}" min="0" onchange="updateBudget(${index}, 'unit', this.value)" class="w-24 px-2 py-1 border rounded text-xs"></td>
+                    <td class="p-2 font-semibold text-gray-800">$${(row.cant * row.unit).toLocaleString('es-CO')}</td>
+                    <td class="p-2 text-center"><input type="checkbox" checked class="rounded text-brand-600"></td>
+                    <td class="p-2 text-center"><input type="checkbox" checked class="rounded text-brand-600"></td>
+                    <td class="p-2 text-center"><button type="button" onclick="removeBudgetRow(${index})" class="text-red-500 hover:text-red-700 font-bold">&times;</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            calculateBudgetTotals();
+        }
+
+        function addBudgetRow() {
+            budgetRowsData.push({ concepto: "Nuevo concepto", desc: "", cant: 1, unit: 100000 });
+            renderBudgetTable();
+        }
+
+        function removeBudgetRow(index) {
+            budgetRowsData.splice(index, 1);
+            renderBudgetTable();
+        }
+
+        function updateBudget(index, field, value) {
+            if (field === 'cant' || field === 'unit') {
+                budgetRowsData[index][field] = parseFloat(value) || 0;
+            } else {
+                budgetRowsData[index][field] = value;
+            }
+            renderBudgetTable();
+        }
+
+        function calculateBudgetTotals() {
+            let total = budgetRowsData.reduce((acc, r) => acc + (r.cant * r.unit), 0);
+            document.getElementById('lbl-total-general').innerText = `$${total.toLocaleString('es-CO')} COP`;
+            document.getElementById('lbl-total-solicitado').innerText = `$${total.toLocaleString('es-CO')} COP`;
+        }
+
+        function generateReviewSummary() {
+            const d = collectAllFormData();
+            const container = document.getElementById('review-summary');
+            container.innerHTML = `
+                <p><strong>Proponente:</strong> ${d.p1.nombre} (${d.p1.whatsapp})</p>
+                <p><strong>Ubicación:</strong> ${d.p1.municipio}, ${d.p1.depto} - ${d.p1.comunidad}</p>
+                <p><strong>Categoría:</strong> ${d.p2.categoria}</p>
+                <p><strong>Nombre de Propuesta:</strong> ${d.p2.nombreProp}</p>
+                <p><strong>Problema:</strong> ${d.p3.problema}</p>
+                <p><strong>Solución:</strong> ${d.p4.propuesta}</p>
+                <p><strong>Beneficiarios directos:</strong> ${d.p5.directos} personas</p>
+                <p><strong>Presupuesto Total Estimado:</strong> $${d.p7.totalGeneral.toLocaleString('es-CO')} COP</p>
+            `;
+        }
+
+        function collectAllFormData() {
+            const actInputs = document.querySelectorAll('.activity-input');
+            let actividades = [];
+            actInputs.forEach(i => { if(i.value.trim()) actividades.push(i.value.trim()); });
+            let totalGeneral = budgetRowsData.reduce((acc, r) => acc + (r.cant * r.unit), 0);
+
+            return {
+                p1: {
+                    nombre: document.getElementById('p1_nombre').value || 'No especificado',
+                    whatsapp: document.getElementById('p1_whatsapp').value || 'No especificado',
+                    email: document.getElementById('p1_email').value || 'No especificado',
+                    depto: document.getElementById('p1_depto').value || 'No especificado',
+                    municipio: document.getElementById('p1_municipio').value || 'No especificado',
+                    comunidad: document.getElementById('p1_comunidad').value || 'No especificado',
+                    cargo: document.getElementById('p1_cargo').value || 'No especificado',
+                    tipoRep: document.getElementById('p1_tipo_representacion').value,
+                    orgNombre: document.getElementById('p1_org_nombre').value || 'No aplica',
+                    constituyda: document.getElementById('p1_constituyda').value,
+                    nit: document.getElementById('p1_nit').value || 'No aplica',
+                    participantes: document.getElementById('p1_participantes').value || '1',
+                    contactoSec: document.getElementById('p1_contacto_sec').value || 'Ninguno'
+                },
+                p2: {
+                    categoria: document.getElementById('p2_categoria').value,
+                    tipoIdea: document.getElementById('p2_tipo_idea').value,
+                    etapa: document.getElementById('p2_etapa').value,
+                    objetivo: document.getElementById('p2_objetivo_ppal').value || 'No especificado',
+                    nombreProp: document.getElementById('p2_nombre_prop').value || 'No especificado'
+                },
+                p3: {
+                    problema: document.getElementById('p3_problema').value || 'No descrito',
+                    afectados: document.getElementById('p3_afectados').value || 'No especificado',
+                    tiempo: document.getElementById('p3_tiempo').value || 'No especificado',
+                    consecuencias: document.getElementById('p3_consecuencias').value || 'No especificado',
+                    intentos: document.getElementById('p3_intentos').value || 'Ninguno',
+                    recursosAct: document.getElementById('p3_recursos_act').value || 'No especificado',
+                    evidencias: document.getElementById('p3_evidencias').value || 'Ninguna'
+                },
+                p4: {
+                    propuesta: document.getElementById('p4_propuesta').value || 'No descrita',
+                    resultados: document.getElementById('p4_resultados').value || 'No especificado',
+                    actividades: actividades.length > 0 ? actividades : ['No especificadas'],
+                    necesidades: document.getElementById('p4_necesidades').value || 'No especificado',
+                    aliados: document.getElementById('p4_aliados').value || 'Ninguno',
+                    participacion: document.getElementById('p4_participacion').value || 'No especificado'
+                },
+                p5: {
+                    directos: document.getElementById('p5_directos').value || '0',
+                    indirectos: document.getElementById('p5_indirectos').value || '0',
+                    grupos: document.getElementById('p5_grupos').value || 'No especificado',
+                    caracteristicas: document.getElementById('p5_caracteristicas').value || 'No especificado',
+                    inclusion: document.getElementById('p5_inclusion').value || 'No especificado'
+                },
+                p6: {
+                    operacion: document.getElementById('p6_operacion').value || 'No especificado',
+                    administracion: document.getElementById('p6_administracion').value || 'No especificado',
+                    experiencia: document.getElementById('p6_experiencia').value || 'No especificado',
+                    requisitos: document.getElementById('p6_requisitos').value || 'Ninguno'
+                },
+                p7: {
+                    totalGeneral: totalGeneral,
+                    aporteComunidad: document.getElementById('p7_aporte_comunidad').value || 'No especificado',
+                    financiacionPrevia: document.getElementById('p7_financiacion_previa').value || 'Ninguna'
+                },
+                p8: {
+                    inicio: document.getElementById('p8_inicio').value || 'Pronto',
+                    duracion: document.getElementById('p8_duracion').value || 'No especificado',
+                    riesgos: document.getElementById('p8_riesgos').value || 'Ninguno',
+                    mitigacion: document.getElementById('p8_mitigacion').value || 'No especificado',
+                    sostenibilidad: document.getElementById('p8_sostenibilidad').value || 'No especificado',
+                    resultadosAnual: document.getElementById('p8_resultados_anual').value || 'No especificado'
+                }
+            };
+        }
+
+        function sendToWhatsApp() {
+            const consent = document.getElementById('p10_consentimiento').checked;
+            if (!consent) {
+                alert("Debes aceptar la autorización de tratamiento de datos personales para continuar.");
+                return;
+            }
+
+            const d = collectAllFormData();
+            let message = `🧱 *LEVANTÉMONOS Y EDIFIQUEMOS (INICIATIVA COMUNITARIA)*\n` +
+                `*Fundación Social Salud Hoy al Alcance de Todos*\n\n` +
+                `*1. EL LLAMADO DEL LÍDER*\n` +
+                `• Nombre: ${d.p1.nombre}\n` +
+                `• WhatsApp: ${d.p1.whatsapp}\n` +
+                `• Ubicación: ${d.p1.municipio}, ${d.p1.depto} (${d.p1.comunidad})\n` +
+                `• Organización: ${d.p1.orgNombre}\n\n` +
+                `*2. CLASIFICACIÓN*\n` +
+                `• Categoría: ${d.p2.categoria}\n` +
+                `• Propuesta: ${d.p2.nombreProp}\n\n` +
+                `*3. PROBLEMA*\n` +
+                `${d.p3.problema}\n\n` +
+                `*4. SOLUCIÓN*\n` +
+                `${d.p4.propuesta}\n\n` +
+                `*5. BENEFICIARIOS*\n` +
+                `• Directos: ${d.p5.directos} (${d.p5.grupos})\n\n` +
+                `*6. PRESUPUESTO EST.*:\n` +
+                `• Total: $${d.p7.totalGeneral.toLocaleString('es-CO')} COP\n\n` +
+                `_Enviado desde la plataforma oficial de la Fundación._`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+        }
+
+        function downloadFichaPDF() {
+            const d = collectAllFormData();
+            let content = `========================================\n` +
+                `FUNDACIÓN SOCIAL SALUD HOY AL ALCANCE DE TODOS\n` +
+                `Ficha de Iniciativa Comunitaria - "Levantémonos y Edifiquemos"\n` +
+                `========================================\n\n` +
+                `1. EL LLAMADO DEL LÍDER:\n` +
+                `- Proponente: ${d.p1.nombre}\n` +
+                `- WhatsApp: ${d.p1.whatsapp}\n` +
+                `- Ubicación: ${d.p1.municipio}, ${d.p1.depto} - ${d.p1.comunidad}\n\n` +
+                `2. PROPUESTA:\n` +
+                `- Categoría: ${d.p2.categoria}\n` +
+                `- Nombre: ${d.p2.nombreProp}\n\n` +
+                `3. PROBLEMA:\n${d.p3.problema}\n\n` +
+                `4. SOLUCIÓN:\n${d.p4.propuesta}\n\n` +
+                `5. PRESUPUESTO: $${d.p7.totalGeneral.toLocaleString('es-CO')} COP\n`;
+
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Iniciativa_${d.p1.municipio.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function saveDraft() {
+            const data = collectAllFormData();
+            localStorage.setItem('salud_hoy_draft', JSON.stringify(data));
+        }
+
+        function saveDraftManual() {
+            saveDraft();
+            alert("¡Borrador guardado exitosamente en este dispositivo!");
+        }
+
+        function checkSavedDraft() {
+            const saved = localStorage.getItem('salud_hoy_draft');
+            if (saved) {
+                document.getElementById('draft-alert').classList.remove('hidden');
+            }
+        }
+
+        function clearDraft() {
+            localStorage.removeItem('salud_hoy_draft');
+            document.getElementById('draft-alert').classList.add('hidden');
+            location.reload();
+        }
+
+        function openAdminModal() {
+            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
